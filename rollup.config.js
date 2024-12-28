@@ -1,6 +1,7 @@
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
+import copy from 'rollup-plugin-copy';
 import { builtinModules } from 'node:module';
 
 function prefixBuiltinModules() {
@@ -22,6 +23,19 @@ export default [
 		},
 		plugins: [nodeResolve({ preferBuiltins: true }), commonjs(), json(), prefixBuiltinModules()],
 		external: ['ENV', 'HANDLER']
+	},
+	{
+		input: 'src/index.js',
+		plugins: [
+			copy({
+				targets: [
+					{
+						src: 'src/package.json',
+						dest: 'files'
+					}
+				]
+			})
+		]
 	},
 	{
 		input: 'src/env.js',

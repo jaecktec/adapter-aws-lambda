@@ -9,13 +9,13 @@ const files = fileURLToPath(new URL('./files', import.meta.url).href);
 
 /** @type {import('./index.js').default} */
 export default function (opts = {}) {
-	const { out = 'build', precompress = true, envPrefix = '' } = opts;
+	const { out = 'build', envPrefix = '' } = opts;
 
 	return {
-		name: '@sveltejs/adapter-node',
+		name: '@jaecktec/adapter-aws-lambda',
 
 		async adapt(builder) {
-			const tmp = builder.getBuildDirectory('adapter-node');
+			const tmp = builder.getBuildDirectory('adapter-aws-lambda');
 
 			builder.rimraf(out);
 			builder.rimraf(tmp);
@@ -24,14 +24,6 @@ export default function (opts = {}) {
 			builder.log.minor('Copying assets');
 			builder.writeClient(`${out}/client${builder.config.kit.paths.base}`);
 			builder.writePrerendered(`${out}/prerendered${builder.config.kit.paths.base}`);
-
-			if (precompress) {
-				builder.log.minor('Compressing assets');
-				await Promise.all([
-					builder.compress(`${out}/client`),
-					builder.compress(`${out}/prerendered`)
-				]);
-			}
 
 			builder.log.minor('Building server');
 
