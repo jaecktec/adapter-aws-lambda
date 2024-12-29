@@ -35,6 +35,8 @@
 		"dev": "node -e \"fs.rmSync('files', { force: true, recursive: true })\" && rollup -cw",
 		"build": "node -e \"fs.rmSync('files', { force: true, recursive: true })\" && rollup -c",
 		"test": "echo \"tests temporarily disabled\" # vitest run",
+		"changeset:version": "changeset version && pnpm -r generate:version && git add --all",
+		"changeset:release": "changeset publish",
 		"check": "tsc",
 		"lint": "prettier --check .",
 		"format": "pnpm lint --write",
@@ -52,7 +54,8 @@
 		"sirv": "^3.0.0",
 		"typescript": "^5.3.3",
 		"vitest": "^2.1.6",
-		"node-fetch": "^3.3.2"
+		"node-fetch": "^3.3.2",
+		"@changesets/cli": "^2.27.11"
 	},
 	"dependencies": {
 		"@rollup/plugin-commonjs": "^28.0.1",
