@@ -1,5 +1,11 @@
 # adapter-aws-lambda
 
+## Installation
+
+```bash
+npm i @jaecktec/adapter-aws-lambda
+```
+
 ## A sveltekit adapter for AWS Lambda
 If for some reason you need your sveltekit app to run entirely on AWS Lambda, this adapter is for you.
 Example UseCase: You want to run your sveltekit app on AWS Lambda behind an ALB.
@@ -10,7 +16,7 @@ Running entirely on Lambda is less performant and more expensive than using Clou
 ## Example Usage with Vite and AWS CDK
 ```javascript
 // svelte.config.js
-import adapter from '@sveltejs/adapter-aws-lambda';
+import adapter from '@jaecktec/adapter-aws-lambda';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
