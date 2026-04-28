@@ -1,5 +1,9 @@
 # adapter-aws-lambda
 
+# 🚨🚨🚨 Deprecated in favour of AWS Lambda Web Adapter 🚨🚨🚨
+use https://github.com/aws/aws-lambda-web-adapter 
+It's simpler, requires less funky packaging and works great
+
 ## Installation
 
 ```bash
